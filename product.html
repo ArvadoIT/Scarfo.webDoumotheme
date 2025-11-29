@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Formula Kit - Mezzalama Professional</title>
+    <title>Complete Formulations - Mezzalama Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,19 +32,6 @@
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
         }
-        .sticky-gallery {
-            position: sticky;
-            top: 100px;
-            align-self: start;
-        }
-        .fixed-cart-button {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            border-top: 2px solid #000000;
-        }
     </style>
 </head>
 <body class="bg-white text-black">
@@ -71,73 +58,132 @@
         </div>
     </nav>
 
-    <!-- Product Hero Section -->
-    <section class="py-12 md:py-20">
+    <!-- CTA Banner -->
+    <div class="bg-white border-b border-gray-200 py-3">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-0">
-                <!-- Left Column: Sticky Gallery -->
-                <div class="sticky-gallery border-r border-black pr-6">
-                    <div class="space-y-0">
-                        <img src="https://placehold.co/600x600/ffffff/1a1a1a?text=CUSTOM+BOTTLE+SET" alt="Custom Formula Kit" class="w-full h-auto border border-black">
+            <p class="text-center font-mono text-sm text-black">
+                Not sure what you need? <a href="consultation.html" class="text-[#8B0000] hover:underline">Start the Diagnosis</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="serif text-5xl md:text-6xl text-black mb-4">
+                COMPLETE FORMULATIONS
+            </h1>
+            <p class="font-mono text-base text-black">
+                High-performance grooming tools engineered in Rome.
+            </p>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="pb-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-gray-200">
+                <!-- Product 1: MATTE PASTE -->
+                <div class="border-r border-b border-gray-200 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=MATTE+PASTE" alt="Matte Paste" class="w-full h-auto border border-gray-200">
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">MATTE PASTE</h3>
+                        <p class="font-mono text-xs text-black mb-4">HIGH HOLD / NO SHINE</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€28.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Right Column: Product Details -->
-                <div class="space-y-8 pl-6 pb-24">
-                    <div>
-                        <h1 class="serif text-4xl md:text-5xl text-black mb-4">
-                            CUSTOM FORMULA KIT
-                        </h1>
-                        <p class="text-lg font-mono text-black" id="subtitle">
-                            FORMULATED EXCLUSIVELY FOR YOU
-                        </p>
+                <!-- Product 2: CLAY POMADE -->
+                <div class="border-r border-b border-gray-200 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=CLAY+POMADE" alt="Clay Pomade" class="w-full h-auto border border-gray-200">
                     </div>
-
-                    <!-- Product Details -->
-                    <div class="bg-white p-6 border border-black">
-                        <h3 class="serif text-2xl text-black mb-4">PRODUCT DETAILS</h3>
-                        <div class="space-y-3">
-                            <p class="text-black font-mono text-sm">MATTE FINISH • HIGH HOLD • WATER SOLUBLE</p>
-                        </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">CLAY POMADE</h3>
+                        <p class="font-mono text-xs text-black mb-4">MEDIUM HOLD / NATURAL FINISH</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€28.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Price -->
-                    <div class="space-y-4">
-                        <p class="serif text-4xl text-black">€56.00</p>
+                <!-- Product 3: STYLING POWDER -->
+                <div class="border-r border-b border-gray-200 md:border-r-0 lg:border-r border-gray-200 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=STYLING+POWDER" alt="Styling Powder" class="w-full h-auto border border-gray-200">
                     </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">STYLING POWDER</h3>
+                        <p class="font-mono text-xs text-black mb-4">INSTANT VOLUME / TEXTURE</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€24.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
+                    </div>
+                </div>
 
-                    <!-- Add to Cart Button -->
-                    <button id="addToCartBtn" class="w-full bg-black text-white py-4 hover:bg-[#8B0000] transition font-mono text-sm font-semibold">
-                        ADD TO CART
-                    </button>
+                <!-- Product 4: DAILY SHAMPOO -->
+                <div class="border-r border-b border-gray-200 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=DAILY+SHAMPOO" alt="Daily Shampoo" class="w-full h-auto border border-gray-200">
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">DAILY SHAMPOO</h3>
+                        <p class="font-mono text-xs text-black mb-4">SULFATE FREE / DEEP CLEAN</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€22.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
+                    </div>
+                </div>
 
-                    <!-- Description -->
-                    <div class="bg-white p-6 border border-black">
-                        <h3 class="serif text-2xl text-black mb-4">DESCRIPTION</h3>
-                        <p class="text-black font-mono text-sm leading-relaxed">
-                            Your personalized hair care formula, crafted based on your unique hair type, scalp condition, and styling goals. This custom kit includes professional-grade pomades, clays, and treatments designed specifically for your needs.
-                        </p>
+                <!-- Product 5: BEARD ELIXIR -->
+                <div class="border-r border-b border-gray-200 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=BEARD+ELIXIR" alt="Beard Elixir" class="w-full h-auto border border-gray-200">
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">BEARD ELIXIR</h3>
+                        <p class="font-mono text-xs text-black mb-4">SOFTENING / SANDALWOOD SCENT</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€35.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6: AFTERSHAVE BALM -->
+                <div class="border-r border-b-0 border-gray-200 md:border-r-0 lg:border-r-0 p-6 flex flex-col">
+                    <div class="mb-4">
+                        <img src="https://placehold.co/400x400/ffffff/1a1a1a?text=AFTERSHAVE+BALM" alt="Aftershave Balm" class="w-full h-auto border border-gray-200">
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <h3 class="serif text-xl text-black mb-2 font-bold">AFTERSHAVE BALM</h3>
+                        <p class="font-mono text-xs text-black mb-4">COOLING / ANTI-IRRITATION</p>
+                        <p class="text-black text-lg mb-4 font-semibold">€30.00</p>
+                        <button class="bg-[#8B0000] text-white px-4 py-2 hover:bg-[#700000] transition font-mono text-sm flex items-center justify-center gap-2 mt-auto">
+                            <span>+</span>
+                            <span>QUICK ADD</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Fixed Footer Add to Cart Button (Mobile) -->
-    <div class="fixed-cart-button bg-white md:hidden">
-        <div class="px-6 py-4 flex items-center justify-between">
-            <div>
-                <p class="text-sm font-mono text-black">TOTAL</p>
-                <p class="serif text-2xl text-black">€56.00</p>
-            </div>
-            <button id="mobileAddToCartBtn" class="bg-black text-white px-8 py-3 hover:bg-[#8B0000] transition font-mono text-sm font-semibold">
-                ADD TO CART
-            </button>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-black text-white py-12 mt-20 md:mt-0 border-t border-black">
+    <footer class="bg-black text-white py-12 border-t border-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
@@ -175,38 +221,19 @@
     </footer>
 
     <script>
-        // Initialize
+        // Add to Cart functionality
         function init() {
-            // Get user name from localStorage (set in consultation.html)
-            const userData = localStorage.getItem('consultationData');
-            if (userData) {
-                try {
-                    const data = JSON.parse(userData);
-                    if (data.firstName) {
-                        const subtitleEl = document.getElementById('subtitle');
-                        if (subtitleEl) {
-                            subtitleEl.textContent = `Formulated exclusively for ${data.firstName}`;
-                        }
-                    }
-                } catch (e) {
-                    console.log('Could not parse user data');
+            const quickAddButtons = document.querySelectorAll('button');
+            quickAddButtons.forEach(button => {
+                if (button.textContent.includes('QUICK ADD')) {
+                    button.addEventListener('click', function() {
+                        const productName = this.closest('div').querySelector('h3').textContent;
+                        alert(`Added ${productName} to Cart!`);
+                    });
                 }
-            }
-
-            // Add to Cart buttons
-            document.getElementById('addToCartBtn').addEventListener('click', addToCart);
-            const mobileBtn = document.getElementById('mobileAddToCartBtn');
-            if (mobileBtn) {
-                mobileBtn.addEventListener('click', addToCart);
-            }
+            });
         }
 
-        // Add to Cart
-        function addToCart() {
-            alert('Added Custom Formula Kit to Cart!');
-        }
-
-        // Initialize on load
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
