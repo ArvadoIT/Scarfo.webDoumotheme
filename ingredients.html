@@ -1,194 +1,218 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Nostra Dispensa - MezzaLama</title>
+    <title>The Compounding Lab - Mezzalama Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --olive-green: #2C3E28;
-            --cream: #F5F5F0;
-            --antique-gold: #C5A059;
+            --garnet-red: #8B0000;
+            --jet-black: #000000;
+            --pure-white: #FFFFFF;
+        }
+        * {
+            border-radius: 0px !important;
         }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
         }
         .serif {
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
         .ingredient-card {
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: border-color 0.3s ease;
         }
         .ingredient-card:hover {
-            transform: translateY(-4px);
-            border-color: #C5A059;
+            border-color: #000000;
         }
         .filter-btn.active {
-            background-color: #2C3E28;
-            color: #F5F5F0;
+            background-color: #000000;
+            color: white;
         }
     </style>
 </head>
-<body class="bg-[#F5F5F0] text-[#2C3E28]">
+<body class="bg-white text-black">
     
     <!-- Announcement Bar -->
-    <div class="bg-[#2C3E28] text-[#F5F5F0] py-2 text-center text-sm">
-        <p>Spedizione gratuita per ordini superiori a €100 | Saldi di fine stagione</p>
+    <div class="bg-black text-white py-2 text-center text-sm font-mono">
+        <p>FREE SHIPPING ON ORDERS OVER €100 | END OF SEASON SALE</p>
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="bg-[#F5F5F0] border-b border-[#2C3E28]/10 sticky top-0 z-50">
+    <nav class="bg-white border-b border-black sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="serif text-2xl font-bold text-[#2C3E28]">
+            <div class="serif text-2xl text-black">
                 <a href="index.html">MEZZALAMA</a>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="product.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Haircare</a>
-                <a href="ingredients.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Ingredienti</a>
-                <a href="index.html#heritage" class="text-[#2C3E28] hover:text-[#C5A059] transition">L'Heritage</a>
+                <a href="product.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SHOP</a>
+                <a href="ingredients.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SCIENCE</a>
+                <a href="consultation.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">CONSULTATION</a>
             </div>
-            <a href="consultation.html" class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
-                Inizia la Consulenza
+            <a href="consultation.html" class="bg-black text-white px-6 py-2 hover:bg-[#8B0000] transition font-mono text-sm">
+                START DIAGNOSIS
             </a>
         </div>
     </nav>
 
     <!-- Header Section -->
-    <section class="bg-[#2C3E28] text-[#F5F5F0] py-20">
+    <section class="bg-white text-black py-20 border-y border-black">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="serif text-5xl md:text-6xl font-bold mb-4">
-                La Nostra Dispensa
+            <h1 class="serif text-5xl md:text-6xl mb-4">
+                THE COMPOUNDING LAB
             </h1>
-            <p class="text-xl md:text-2xl text-[#F5F5F0]/90">
-                Pure, potent ingredients sourced from the Italian countryside.
+            <p class="text-lg md:text-xl font-mono text-black">
+                PURE, POTENT INGREDIENTS SOURCED FROM THE ITALIAN COUNTRYSIDE.
             </p>
         </div>
     </section>
 
     <!-- Filter Bar (Sticky) -->
-    <div class="bg-[#F5F5F0] border-b border-[#2C3E28]/10 sticky top-[73px] z-40 py-4">
+    <div class="bg-white border-b border-black sticky top-[73px] z-40 py-4">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-wrap gap-3 justify-center">
-                <button class="filter-btn active px-6 py-2 rounded-full border-2 border-[#2C3E28] bg-[#2C3E28] text-[#F5F5F0] transition" data-filter="all">
-                    Tutti
+                <button class="filter-btn active px-6 py-2 border border-black bg-black text-white hover:bg-[#8B0000] transition font-mono text-sm" data-filter="all">
+                    ALL
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full border-2 border-[#2C3E28] bg-transparent text-[#2C3E28] hover:bg-[#2C3E28] hover:text-[#F5F5F0] transition" data-filter="purifying">
-                    Purificanti
+                <button class="filter-btn px-6 py-2 border border-black bg-white text-black hover:bg-[#8B0000] hover:text-white transition font-mono text-sm" data-filter="purifying">
+                    PURIFYING
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full border-2 border-[#2C3E28] bg-transparent text-[#2C3E28] hover:bg-[#2C3E28] hover:text-[#F5F5F0] transition" data-filter="hydrating">
-                    Idratanti
+                <button class="filter-btn px-6 py-2 border border-black bg-white text-black hover:bg-[#8B0000] hover:text-white transition font-mono text-sm" data-filter="strengthening">
+                    STRENGTHENING
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full border-2 border-[#2C3E28] bg-transparent text-[#2C3E28] hover:bg-[#2C3E28] hover:text-[#F5F5F0] transition" data-filter="soothing">
-                    Lenitivi
-                </button>
-                <button class="filter-btn px-6 py-2 rounded-full border-2 border-[#2C3E28] bg-transparent text-[#2C3E28] hover:bg-[#2C3E28] hover:text-[#F5F5F0] transition" data-filter="repairing">
-                    Riparatori
+                <button class="filter-btn px-6 py-2 border border-black bg-white text-black hover:bg-[#8B0000] hover:text-white transition font-mono text-sm" data-filter="energizing">
+                    ENERGIZING
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Ingredient Grid -->
-    <section class="py-16 bg-[#F5F5F0]">
+    <section class="py-16 bg-white border-y border-black">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Basilico Genovese -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="purifying">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-0 border border-black">
+                <!-- Activated Charcoal -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="purifying">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">01</span>
                     </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Basilico Genovese</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Genova, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Purifying</p>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Activated+Charcoal" alt="Activated Charcoal" class="w-full h-full object-cover border border-black">
                     </div>
-                </div>
-
-                <!-- Olio di Oliva -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="hydrating">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Olio di Oliva</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Toscana, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Hydrating</p>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">ACTIVATED CHARCOAL</h3>
+                        <p class="text-black font-mono text-xs">PURIFYING</p>
                     </div>
                 </div>
 
-                <!-- Limone -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="purifying">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
+                <!-- Kaolin Clay -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="purifying">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">02</span>
                     </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Limone</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Sicilia, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Purifying</p>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Kaolin+Clay" alt="Kaolin Clay" class="w-full h-full object-cover border border-black">
                     </div>
-                </div>
-
-                <!-- Miele -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="soothing">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Miele</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Piemonte, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Soothing</p>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">KAOLIN CLAY</h3>
+                        <p class="text-black font-mono text-xs">PURIFYING</p>
                     </div>
                 </div>
 
-                <!-- Nocciola -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="repairing">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
+                <!-- Argan Oil -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="strengthening">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">03</span>
                     </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Nocciola</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Langhe, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Repairing</p>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Argan+Oil" alt="Argan Oil" class="w-full h-full object-cover border border-black">
                     </div>
-                </div>
-
-                <!-- Camomilla -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="soothing">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Camomilla</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Toscana, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Soothing</p>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">ARGAN OIL</h3>
+                        <p class="text-black font-mono text-xs">STRENGTHENING</p>
                     </div>
                 </div>
 
-                <!-- Rosmarino -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="purifying">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
+                <!-- Tea Tree Oil -->
+                <div class="ingredient-card bg-white border-b border-black p-6 relative" data-function="purifying">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">04</span>
                     </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Rosmarino</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Sardegna, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Purifying</p>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Tea+Tree+Oil" alt="Tea Tree Oil" class="w-full h-full object-cover border border-black">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">TEA TREE OIL</h3>
+                        <p class="text-black font-mono text-xs">PURIFYING</p>
                     </div>
                 </div>
 
-                <!-- Mandorla -->
-                <div class="ingredient-card bg-white rounded-lg border-2 border-[#2C3E28]/10 overflow-hidden" data-function="hydrating">
-                    <div class="w-full aspect-square bg-gray-200 flex items-center justify-center">
-                        <span class="text-[#2C3E28]/30 text-sm">Image</span>
+                <!-- Caffeine -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="energizing">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">05</span>
                     </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="serif text-xl font-semibold text-[#2C3E28]">Mandorla</h3>
-                        <p class="text-sm text-[#2C3E28]/70">Avola, Italy</p>
-                        <p class="text-sm text-[#C5A059] font-medium">Hydrating</p>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Caffeine" alt="Caffeine" class="w-full h-full object-cover border border-black">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">CAFFEINE</h3>
+                        <p class="text-black font-mono text-xs">ENERGIZING</p>
+                    </div>
+                </div>
+
+                <!-- Sandalwood -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="strengthening">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">06</span>
+                    </div>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Sandalwood" alt="Sandalwood" class="w-full h-full object-cover border border-black">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">SANDALWOOD</h3>
+                        <p class="text-black font-mono text-xs">STRENGTHENING</p>
+                    </div>
+                </div>
+
+                <!-- Olive Oil -->
+                <div class="ingredient-card bg-white border-r border-b border-black p-6 relative" data-function="strengthening">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">07</span>
+                    </div>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Olive+Oil" alt="Olive Oil" class="w-full h-full object-cover border border-black">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">OLIVE OIL</h3>
+                        <p class="text-black font-mono text-xs">STRENGTHENING</p>
+                    </div>
+                </div>
+
+                <!-- Lavender -->
+                <div class="ingredient-card bg-white border-b border-black p-6 relative" data-function="purifying">
+                    <div class="absolute top-2 left-2">
+                        <span class="text-black font-mono text-xs">08</span>
+                    </div>
+                    <div class="flex items-center justify-center h-32 mb-4">
+                        <img src="https://placehold.co/300x300/ffffff/000000?text=Lavender" alt="Lavender" class="w-full h-full object-cover border border-black">
+                    </div>
+                    <div class="text-center">
+                        <h3 class="serif text-xl text-black mb-2">LAVENDER</h3>
+                        <p class="text-black font-mono text-xs">PURIFYING</p>
                     </div>
                 </div>
             </div>
@@ -196,39 +220,39 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2C3E28] text-[#F5F5F0] py-12">
+    <footer class="bg-black text-white py-12 border-t border-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="serif text-2xl font-bold mb-4">MEZZALAMA</h3>
-                    <p class="text-sm text-[#F5F5F0]/70">
-                        L'Arte della Cura dei Capelli
+                    <h3 class="serif text-2xl mb-4">MEZZALAMA</h3>
+                    <p class="text-sm font-mono text-white/70">
+                        PRECISION HAIR ENGINEERING.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Careers</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">COMPANY</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">CONTACT</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">CAREERS</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Privacy</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Terms</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">LEGAL</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">PRIVACY</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">TERMS</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Connect</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Instagram</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Facebook</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">CONNECT</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">INSTAGRAM</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">FACEBOOK</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-[#F5F5F0]/20 pt-8 text-center text-sm text-[#F5F5F0]/70">
-                <p>© 2024 MezzaLama. Tutti i diritti riservati.</p>
+            <div class="border-t border-white/20 pt-8 text-center text-sm font-mono text-white/70">
+                <p>© 2024 MEZZALAMA PROFESSIONAL. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
@@ -244,17 +268,19 @@
 
                     // Update active state
                     filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'bg-[#2C3E28]', 'text-[#F5F5F0]');
-                        btn.classList.add('bg-transparent', 'text-[#2C3E28]');
+                        btn.classList.remove('active', 'bg-black', 'text-white');
+                        btn.classList.add('bg-white', 'text-black');
                     });
-                    this.classList.add('active', 'bg-[#2C3E28]', 'text-[#F5F5F0]');
-                    this.classList.remove('bg-transparent', 'text-[#2C3E28]');
+                    this.classList.add('active', 'bg-black', 'text-white');
+                    this.classList.remove('bg-white', 'text-black');
 
                     // Filter cards
                     ingredientCards.forEach(card => {
                         const cardFunction = card.getAttribute('data-function');
                         
-                        if (filter === 'all' || cardFunction === filter) {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else if (cardFunction === filter) {
                             card.style.display = 'block';
                         } else {
                             card.style.display = 'none';
@@ -266,4 +292,3 @@
     </script>
 </body>
 </html>
-

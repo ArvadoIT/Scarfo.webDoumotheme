@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hair Diagnostic - MezzaLama</title>
+    <title>Hair Diagnostic - Mezzalama Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --olive-green: #2C3E28;
-            --cream: #F5F5F0;
-            --antique-gold: #C5A059;
+            --garnet-red: #8B0000;
+            --jet-black: #000000;
+            --pure-white: #FFFFFF;
+        }
+        * {
+            border-radius: 0px !important;
         }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
         }
         .serif {
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
         .step {
             display: none;
@@ -37,11 +49,10 @@
         }
         .texture-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(44, 62, 40, 0.15);
         }
         .texture-card.selected {
-            border-color: #C5A059;
-            background-color: #C5A059/10;
+            border-width: 2px;
+            border-color: #000000;
         }
         .goal-card {
             transition: all 0.3s ease;
@@ -51,17 +62,16 @@
             transform: translateY(-2px);
         }
         .goal-card.selected {
-            border-color: #C5A059;
-            background-color: #C5A059/10;
+            border-width: 2px;
+            border-color: #000000;
         }
         .goal-card.disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
         .spinner {
-            border: 3px solid #F5F5F0;
-            border-top: 3px solid #C5A059;
-            border-radius: 50%;
+            border: 3px solid #FFFFFF;
+            border-top: 3px solid #000000;
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
@@ -72,40 +82,41 @@
         }
         .progress-fill {
             transition: width 0.4s ease;
+            background-color: #8B0000;
         }
     </style>
 </head>
-<body class="bg-[#F5F5F0] text-[#2C3E28] min-h-screen">
+<body class="bg-white text-black min-h-screen">
     
     <!-- Announcement Bar -->
-    <div class="bg-[#2C3E28] text-[#F5F5F0] py-2 text-center text-sm">
-        <p>Spedizione gratuita per ordini superiori a €100 | Saldi di fine stagione</p>
+    <div class="bg-black text-white py-2 text-center text-sm font-mono">
+        <p>FREE SHIPPING ON ORDERS OVER €100 | END OF SEASON SALE</p>
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="bg-[#F5F5F0] border-b border-[#2C3E28]/10 sticky top-0 z-50">
+    <nav class="bg-white border-b border-black sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="serif text-2xl font-bold text-[#2C3E28]">
+            <div class="serif text-2xl text-black">
                 <a href="index.html">MEZZALAMA</a>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="product.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Haircare</a>
-                <a href="ingredients.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Ingredienti</a>
-                <a href="index.html#heritage" class="text-[#2C3E28] hover:text-[#C5A059] transition">L'Heritage</a>
+                <a href="product.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SHOP</a>
+                <a href="ingredients.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SCIENCE</a>
+                <a href="consultation.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">CONSULTATION</a>
             </div>
-            <a href="consultation.html" class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
-                Inizia la Consulenza
+            <a href="consultation.html" class="bg-black text-white px-6 py-2 hover:bg-[#8B0000] transition font-mono text-sm">
+                START DIAGNOSIS
             </a>
         </div>
     </nav>
     
     <!-- Progress Bar (Fixed at Top) -->
-    <div class="fixed top-[73px] left-0 right-0 z-40 bg-[#F5F5F0] border-b border-[#2C3E28]/10">
+    <div class="fixed top-[73px] left-0 right-0 z-40 bg-white border-b border-black">
         <div class="max-w-4xl mx-auto px-6 py-4">
-            <div class="w-full bg-[#2C3E28]/10 rounded-full h-2">
-                <div id="progressBar" class="progress-fill bg-[#C5A059] h-2 rounded-full" style="width: 0%"></div>
+            <div class="w-full bg-white border border-black h-2">
+                <div id="progressBar" class="progress-fill bg-[#8B0000] h-2" style="width: 0%"></div>
             </div>
-            <p class="text-sm text-[#2C3E28]/70 mt-2 text-center" id="progressText">Step 1 of 5</p>
+            <p class="text-sm font-mono text-black mt-2 text-center" id="progressText">STEP 1 OF 5</p>
         </div>
     </div>
 
@@ -115,160 +126,149 @@
             
             <!-- Step 1: Intro -->
             <div id="step1" class="step active">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-                    <h1 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-4">
-                        Benvenuto
+                <div class="bg-white p-8 md:p-12 border border-black">
+                    <h1 class="serif text-4xl md:text-5xl text-black mb-4">
+                        LET'S BUILD YOUR PROFILE
                     </h1>
-                    <p class="text-xl text-[#2C3E28]/70 mb-8">
-                        Let's build your profile.
+                    <p class="text-lg font-mono text-black mb-8">
+                        SELECT YOUR HAIR TYPE, SCALP CONDITION, AND STYLING GOALS.
                     </p>
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-semibold text-[#2C3E28] mb-2">First Name</label>
+                            <label class="block text-sm font-mono font-semibold text-black mb-2">FIRST NAME</label>
                             <input 
                                 type="text" 
                                 id="firstName"
-                                class="w-full border-2 border-[#2C3E28]/20 rounded-sm px-4 py-3 focus:outline-none focus:border-[#C5A059] transition"
-                                placeholder="Enter your first name"
+                                class="w-full border border-black px-4 py-3 focus:outline-none focus:border-black transition font-mono text-sm bg-white"
+                                placeholder="ENTER YOUR FIRST NAME"
                             >
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-[#2C3E28] mb-2">Zip Code</label>
+                            <label class="block text-sm font-mono font-semibold text-black mb-2">ZIP CODE</label>
                             <input 
                                 type="text" 
                                 id="zipCode"
-                                class="w-full border-2 border-[#2C3E28]/20 rounded-sm px-4 py-3 focus:outline-none focus:border-[#C5A059] transition"
-                                placeholder="Enter your zip code"
+                                class="w-full border border-black px-4 py-3 focus:outline-none focus:border-black transition font-mono text-sm bg-white"
+                                placeholder="ENTER YOUR ZIP CODE"
                             >
-                            <p class="text-xs text-[#2C3E28]/60 mt-2">This helps us understand environmental factors in your area.</p>
+                            <p class="text-xs font-mono text-black mt-2">THIS HELPS US UNDERSTAND ENVIRONMENTAL FACTORS IN YOUR AREA.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 2: Hair Texture -->
+            <!-- Step 2: Hair Type -->
             <div id="step2" class="step">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
-                        Your Hair Texture
+                <div class="bg-white p-8 md:p-12 border border-black">
+                    <h2 class="serif text-4xl md:text-5xl text-black mb-8">
+                        SELECT YOUR HAIR TYPE
                     </h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="straight">
-                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="texture-card border border-black p-6 text-center" data-texture="straight">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-white flex items-center justify-center border border-black">
+                                <svg class="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
                                 </svg>
                             </div>
-                            <p class="font-semibold text-[#2C3E28]">Straight</p>
+                            <p class="font-mono font-semibold text-black text-sm">STRAIGHT</p>
                         </div>
-                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="wavy">
-                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="texture-card border border-black p-6 text-center" data-texture="wavy">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-white flex items-center justify-center border border-black">
+                                <svg class="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
                                 </svg>
                             </div>
-                            <p class="font-semibold text-[#2C3E28]">Wavy</p>
+                            <p class="font-mono font-semibold text-black text-sm">WAVY</p>
                         </div>
-                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="curly">
-                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="texture-card border border-black p-6 text-center" data-texture="curly">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-white flex items-center justify-center border border-black">
+                                <svg class="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                 </svg>
                             </div>
-                            <p class="font-semibold text-[#2C3E28]">Curly</p>
+                            <p class="font-mono font-semibold text-black text-sm">CURLY</p>
                         </div>
-                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="coily">
-                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="texture-card border border-black p-6 text-center" data-texture="receding">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-white flex items-center justify-center border border-black">
+                                <svg class="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                 </svg>
                             </div>
-                            <p class="font-semibold text-[#2C3E28]">Coily</p>
+                            <p class="font-mono font-semibold text-black text-sm">RECEDING</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 3: Scalp Health -->
+            <!-- Step 3: Scalp Condition -->
             <div id="step3" class="step">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
-                        Scalp Condition
+                <div class="bg-white p-8 md:p-12 border border-black">
+                    <h2 class="serif text-4xl md:text-5xl text-black mb-8">
+                        SCALP CONDITION
                     </h2>
                     <div class="space-y-4">
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="scalp" value="oily" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">Oily</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="scalp" value="dry-scalp" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">DRY SCALP</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="scalp" value="dry" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">Dry</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="scalp" value="itchy-beard" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">ITCHY BEARD</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="scalp" value="balanced" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">Balanced</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="scalp" value="oily-skin" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">OILY SKIN</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="scalp" value="sensitive" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">Sensitive</span>
-                        </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="scalp" value="dandruff" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">Dandruff</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="scalp" value="sensitive" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">SENSITIVE</span>
                         </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 4: Lifestyle -->
+            <!-- Step 4: Styling Goal -->
             <div id="step4" class="step">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
-                        Daily Routine
+                <div class="bg-white p-8 md:p-12 border border-black">
+                    <h2 class="serif text-4xl md:text-5xl text-black mb-8">
+                        STYLING GOALS
                     </h2>
                     <div class="space-y-4">
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="lifestyle" value="workout" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">I workout daily</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="lifestyle" value="matte-finish" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">MATTE FINISH</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="lifestyle" value="swim" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">I swim often</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="lifestyle" value="high-shine" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">HIGH SHINE</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="lifestyle" value="heat" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">I style with heat</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="lifestyle" value="strong-hold" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">STRONG HOLD</span>
                         </label>
-                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
-                            <input type="checkbox" name="lifestyle" value="color" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
-                            <span class="ml-4 text-lg text-[#2C3E28]">I color my hair</span>
+                        <label class="flex items-center p-4 border border-black cursor-pointer hover:bg-white transition">
+                            <input type="checkbox" name="lifestyle" value="natural-look" class="w-5 h-5 text-black border-black focus:ring-black">
+                            <span class="ml-4 text-lg font-mono text-black">NATURAL LOOK</span>
                         </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 5: Hair Goals -->
+            <!-- Step 5: Fragrance -->
             <div id="step5" class="step">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-4">
-                        Hair Goals
+                <div class="bg-white p-8 md:p-12 border border-black">
+                    <h2 class="serif text-4xl md:text-5xl text-black mb-8">
+                        FRAGRANCE?
                     </h2>
-                    <p class="text-[#2C3E28]/70 mb-8">Select up to 3 goals</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="shine">
-                            <p class="font-semibold text-lg text-[#2C3E28]">Shine</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="goal-card border border-black p-6 text-center" data-goal="tobacco-oak">
+                            <p class="font-mono font-semibold text-lg text-black">TOBACCO & OAK</p>
                         </div>
-                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="volume">
-                            <p class="font-semibold text-lg text-[#2C3E28]">Volume</p>
+                        <div class="goal-card border border-black p-6 text-center" data-goal="citrus-neroli">
+                            <p class="font-mono font-semibold text-lg text-black">CITRUS & NEROLI</p>
                         </div>
-                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="repair">
-                            <p class="font-semibold text-lg text-[#2C3E28]">Repair</p>
-                        </div>
-                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="length">
-                            <p class="font-semibold text-lg text-[#2C3E28]">Length</p>
-                        </div>
-                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="anti-frizz">
-                            <p class="font-semibold text-lg text-[#2C3E28]">Anti-Frizz</p>
+                        <div class="goal-card border border-black p-6 text-center" data-goal="unscented">
+                            <p class="font-mono font-semibold text-lg text-black">UNSCENTED</p>
                         </div>
                     </div>
                 </div>
@@ -276,30 +276,30 @@
 
             <!-- Analyzing Results Screen -->
             <div id="analyzing" class="step">
-                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-6">
-                        Analyzing Results...
+                <div class="bg-white p-8 md:p-12 text-center border border-black">
+                    <h2 class="serif text-4xl md:text-5xl text-black mb-6">
+                        ANALYZING RESULTS...
                     </h2>
-                    <p class="text-xl text-[#2C3E28]/70 mb-8">
-                        We're crafting your personalized formula
+                    <p class="text-lg font-mono text-black mb-8">
+                        WE'RE CRAFTING YOUR PERSONALIZED FORMULA
                     </p>
                     <div class="flex justify-center mb-8">
                         <div class="spinner"></div>
                     </div>
-                    <div class="w-full bg-[#2C3E28]/10 rounded-full h-2 max-w-md mx-auto">
-                        <div id="analyzingProgress" class="bg-[#C5A059] h-2 rounded-full" style="width: 0%"></div>
+                    <div class="w-full bg-white border border-black h-2 max-w-md mx-auto">
+                        <div id="analyzingProgress" class="bg-[#8B0000] h-2" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Navigation Buttons -->
             <div id="navigation" class="mt-8 flex justify-between items-center">
-                <button id="backBtn" class="px-6 py-3 border-2 border-[#2C3E28]/30 text-[#2C3E28] rounded-sm hover:bg-[#2C3E28]/5 transition" style="display: none;">
-                    Back
+                <button id="backBtn" class="px-6 py-3 border border-black text-black hover:bg-[#8B0000] hover:text-white transition font-mono text-sm" style="display: none;">
+                    BACK
                 </button>
                 <div class="flex-1"></div>
-                <button id="nextBtn" class="px-6 py-3 bg-[#2C3E28] text-[#F5F5F0] rounded-sm hover:bg-[#1a2518] transition">
-                    Next
+                <button id="nextBtn" class="px-6 py-3 bg-black text-white hover:bg-[#8B0000] transition font-mono text-sm">
+                    NEXT
                 </button>
             </div>
 
@@ -338,7 +338,7 @@
         function updateProgress() {
             const percentage = (state.currentStep / state.totalSteps) * 100;
             progressBar.style.width = percentage + '%';
-            progressText.textContent = `Step ${state.currentStep} of ${state.totalSteps}`;
+            progressText.textContent = `STEP ${state.currentStep} OF ${state.totalSteps}`;
             
             // Show/hide back button
             if (state.currentStep === 1) {
@@ -349,9 +349,9 @@
 
             // Update next button text
             if (state.currentStep === state.totalSteps) {
-                nextBtn.textContent = 'Complete';
+                nextBtn.textContent = 'COMPLETE';
             } else {
-                nextBtn.textContent = 'Next';
+                nextBtn.textContent = 'NEXT';
             }
         }
 
@@ -413,7 +413,7 @@
                 
                 case 5:
                     if (state.data.goals.length === 0) {
-                        alert('Please select at least one hair goal');
+                        alert('Please select a fragrance preference');
                         return false;
                     }
                     return true;
@@ -467,7 +467,7 @@
                 if (progress >= 100) {
                     clearInterval(interval);
                 }
-            }, 60); // 3 seconds total (100% / 60ms = ~1.67% per interval, ~60 intervals = 3.6s, but we'll do 2% per 60ms = 3s)
+            }, 60);
 
             // Redirect after 3 seconds
             setTimeout(() => {
@@ -490,7 +490,7 @@
                 });
             });
 
-            // Hair goals cards (select up to 3)
+            // Fragrance cards
             document.querySelectorAll('.goal-card').forEach(card => {
                 card.addEventListener('click', function() {
                     if (this.classList.contains('disabled')) {
@@ -504,27 +504,11 @@
                         this.classList.remove('selected');
                         state.data.goals = state.data.goals.filter(g => g !== goal);
                     } else {
-                        if (state.data.goals.length < 3) {
-                            this.classList.add('selected');
-                            state.data.goals.push(goal);
-                        }
+                        document.querySelectorAll('.goal-card').forEach(c => c.classList.remove('selected'));
+                        this.classList.add('selected');
+                        state.data.goals = [goal];
                     }
-
-                    // Update disabled state
-                    updateGoalCards();
                 });
-            });
-        }
-
-        // Update Goal Cards (disable if 3 selected)
-        function updateGoalCards() {
-            const maxSelected = state.data.goals.length >= 3;
-            document.querySelectorAll('.goal-card').forEach(card => {
-                if (maxSelected && !card.classList.contains('selected')) {
-                    card.classList.add('disabled');
-                } else {
-                    card.classList.remove('disabled');
-                }
             });
         }
 
@@ -533,4 +517,3 @@
     </script>
 </body>
 </html>
-

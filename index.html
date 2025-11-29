@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MezzaLama - L'Arte della Cura dei Capelli</title>
+    <title>Mezzalama Professional - Precision Hair Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --olive-green: #2C3E28;
-            --cream: #F5F5F0;
-            --antique-gold: #C5A059;
+            --garnet-red: #8B0000;
+            --jet-black: #000000;
+            --pure-white: #FFFFFF;
+        }
+        * {
+            border-radius: 0px !important;
         }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
         }
         .serif {
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
         .marquee {
             animation: scroll 20s linear infinite;
@@ -27,119 +39,137 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .carousel-container {
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .carousel-container::-webkit-scrollbar {
-            display: none;
-        }
     </style>
 </head>
-<body class="bg-[#F5F5F0] text-[#2C3E28]">
+<body class="bg-white text-black">
     
     <!-- Announcement Bar -->
-    <div class="bg-[#2C3E28] text-[#F5F5F0] py-2 text-center text-sm">
-        <p>Spedizione gratuita per ordini superiori a €100 | Saldi di fine stagione</p>
+    <div class="bg-black text-white py-2 text-center text-sm font-mono">
+        <p>FREE SHIPPING ON ORDERS OVER €100 | END OF SEASON SALE</p>
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="bg-[#F5F5F0] border-b border-[#2C3E28]/10 sticky top-0 z-50">
+    <nav class="bg-white border-b border-black sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="serif text-2xl font-bold text-[#2C3E28]">
+            <div class="serif text-2xl text-black">
                 <a href="index.html">MEZZALAMA</a>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="product.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Haircare</a>
-                <a href="ingredients.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Ingredienti</a>
-                <a href="index.html#heritage" class="text-[#2C3E28] hover:text-[#C5A059] transition">L'Heritage</a>
+                <a href="product.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SHOP</a>
+                <a href="ingredients.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">SCIENCE</a>
+                <a href="consultation.html" class="text-black hover:text-[#8B0000] transition font-mono text-sm">CONSULTATION</a>
             </div>
-            <a href="consultation.html" class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
-                Inizia la Consulenza
+            <a href="consultation.html" class="bg-black text-white px-6 py-2 hover:bg-[#8B0000] transition font-mono text-sm">
+                START DIAGNOSIS
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center">
-        <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center w-full">
-            <div class="space-y-6">
-                <h1 class="serif text-5xl md:text-7xl font-bold text-[#2C3E28] leading-tight">
-                    L'Arte della Cura dei Capelli
-                </h1>
-                <p class="text-xl text-[#2C3E28]/80 leading-relaxed">
-                    Personalized formulas crafted in Milan for your unique hair profile.
-                </p>
-                <div class="pt-4">
-                    <label class="block text-sm text-[#2C3E28]/70 mb-2">Andiamo. What is your name?</label>
-                    <input 
-                        type="text" 
-                        class="w-full md:w-96 border-2 border-[#2C3E28]/20 rounded-sm px-4 py-3 focus:outline-none focus:border-[#C5A059] transition"
-                        placeholder="Enter your name"
-                    >
-                </div>
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-white">
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center w-full">
+            <h1 class="serif text-7xl md:text-8xl text-black leading-tight mb-8">
+                PRECISION HAIR ENGINEERING.
+            </h1>
+            <p class="font-mono text-lg text-black mb-12 max-w-2xl mx-auto">
+                Professional grade pomades, clays, and treatments tailored to your DNA.
+            </p>
+            <div class="pt-4">
+                <a href="consultation.html" class="inline-block bg-black text-white px-12 py-4 hover:bg-[#8B0000] transition font-mono text-sm">
+                    START DIAGNOSIS
+                </a>
             </div>
-            <div class="w-full h-[500px] bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                <span class="text-[#2C3E28]/50 text-lg">Lifestyle Image Placeholder</span>
+        </div>
+    </section>
+
+    <!-- Product Previews Section -->
+    <section class="py-20 bg-white border-y border-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="serif text-4xl md:text-5xl text-center text-black mb-16">
+                BEST SELLERS
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Matte Paste -->
+                <div class="text-center space-y-4 border border-black p-6">
+                    <img src="https://placehold.co/400x500/ffffff/1a1a1a?text=MATTE+PASTE+JAR" alt="Matte Paste" class="w-full h-auto border border-black">
+                    <h3 class="serif text-2xl text-black">MATTE PASTE</h3>
+                    <p class="text-black font-mono text-sm">High hold styling wax for textured looks</p>
+                    <a href="product.html" class="inline-block border border-black text-black px-6 py-2 hover:bg-[#8B0000] hover:text-white transition font-mono text-sm">
+                        VIEW PRODUCT
+                    </a>
+                </div>
+                <!-- Volume Powder -->
+                <div class="text-center space-y-4 border border-black p-6">
+                    <img src="https://placehold.co/400x500/ffffff/1a1a1a?text=VOLUME+POWDER" alt="Volume Powder" class="w-full h-auto border border-black">
+                    <h3 class="serif text-2xl text-black">VOLUME POWDER</h3>
+                    <p class="text-black font-mono text-sm">Lightweight texture powder for maximum volume</p>
+                    <a href="product.html" class="inline-block border border-black text-black px-6 py-2 hover:bg-[#8B0000] hover:text-white transition font-mono text-sm">
+                        VIEW PRODUCT
+                    </a>
+                </div>
+                <!-- Scalp Serum -->
+                <div class="text-center space-y-4 border border-black p-6">
+                    <img src="https://placehold.co/400x500/ffffff/1a1a1a?text=SCALP+SERUM" alt="Scalp Serum" class="w-full h-auto border border-black">
+                    <h3 class="serif text-2xl text-black">SCALP SERUM</h3>
+                    <p class="text-black font-mono text-sm">Nourishing treatment for healthy scalp</p>
+                    <a href="product.html" class="inline-block border border-black text-black px-6 py-2 hover:bg-[#8B0000] hover:text-white transition font-mono text-sm">
+                        VIEW PRODUCT
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Marquee/Ticker -->
-    <div class="bg-[#2C3E28] text-[#F5F5F0] py-4 overflow-hidden">
+    <div class="bg-white border-y border-black py-6 overflow-hidden">
         <div class="flex whitespace-nowrap marquee">
-            <span class="px-8 text-lg">Senza Solfati</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Artigianale</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Made in Italy</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Cruelty-Free</span>
-            <span class="px-8 text-lg">Senza Solfati</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Artigianale</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Made in Italy</span>
-            <span class="px-8 text-lg">•</span>
-            <span class="px-8 text-lg">Cruelty-Free</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">BARBER APPROVED</span>
+            <span class="px-8 text-2xl font-mono text-black">•</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">MADE IN ITALY</span>
+            <span class="px-8 text-2xl font-mono text-black">•</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">PARABEN FREE</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">BARBER APPROVED</span>
+            <span class="px-8 text-2xl font-mono text-black">•</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">MADE IN ITALY</span>
+            <span class="px-8 text-2xl font-mono text-black">•</span>
+            <span class="px-8 text-2xl font-mono text-black font-semibold">PARABEN FREE</span>
         </div>
     </div>
 
     <!-- How It Works Section -->
-    <section id="heritage" class="py-20 bg-[#F5F5F0]">
+    <section class="py-20 bg-white border-y border-black">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="serif text-4xl md:text-5xl font-bold text-center text-[#2C3E28] mb-16">
-                Il Processo
+            <h2 class="serif text-4xl md:text-5xl text-center text-black mb-16">
+                THE PROCESS
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
-                <div class="text-center space-y-4">
-                    <div class="w-64 h-64 mx-auto bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30 mb-6">
-                        <span class="text-[#2C3E28]/50">Icon Placeholder</span>
+                <div class="text-center space-y-4 border border-black p-6">
+                    <div class="w-64 h-64 mx-auto bg-white flex items-center justify-center border border-black mb-6">
+                        <span class="text-black font-mono text-xs">ICON</span>
                     </div>
-                    <h3 class="serif text-2xl font-semibold text-[#2C3E28]">The Consultation</h3>
-                    <p class="text-[#2C3E28]/70 leading-relaxed">
+                    <h3 class="serif text-2xl text-black">THE CONSULTATION</h3>
+                    <p class="text-black font-mono text-sm leading-relaxed">
                         We analyze 80+ factors including your diet, lifestyle, and hair history to understand your unique needs.
                     </p>
                 </div>
                 <!-- Step 2 -->
-                <div class="text-center space-y-4">
-                    <div class="w-64 h-64 mx-auto bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30 mb-6">
-                        <span class="text-[#2C3E28]/50">Icon Placeholder</span>
+                <div class="text-center space-y-4 border border-black p-6">
+                    <div class="w-64 h-64 mx-auto bg-white flex items-center justify-center border border-black mb-6">
+                        <span class="text-black font-mono text-xs">ICON</span>
                     </div>
-                    <h3 class="serif text-2xl font-semibold text-[#2C3E28]">Artisan Formulation</h3>
-                    <p class="text-[#2C3E28]/70 leading-relaxed">
+                    <h3 class="serif text-2xl text-black">ARTISAN FORMULATION</h3>
+                    <p class="text-black font-mono text-sm leading-relaxed">
                         Our master formulators blend premium ingredients in our Milan laboratory, creating your personalized formula.
                     </p>
                 </div>
                 <!-- Step 3 -->
-                <div class="text-center space-y-4">
-                    <div class="w-64 h-64 mx-auto bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30 mb-6">
-                        <span class="text-[#2C3E28]/50">Icon Placeholder</span>
+                <div class="text-center space-y-4 border border-black p-6">
+                    <div class="w-64 h-64 mx-auto bg-white flex items-center justify-center border border-black mb-6">
+                        <span class="text-black font-mono text-xs">ICON</span>
                     </div>
-                    <h3 class="serif text-2xl font-semibold text-[#2C3E28]">Evolving Care</h3>
-                    <p class="text-[#2C3E28]/70 leading-relaxed">
+                    <h3 class="serif text-2xl text-black">EVOLVING CARE</h3>
+                    <p class="text-black font-mono text-sm leading-relaxed">
                         As seasons change and your hair evolves, we adjust your formula to ensure optimal results year-round.
                     </p>
                 </div>
@@ -147,221 +177,111 @@
         </div>
     </section>
 
-    <!-- Split Benefit Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Left: Custom Haircare -->
-                <div class="relative">
-                    <div class="w-full h-[500px] bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30 mb-6">
-                        <span class="text-[#2C3E28]/50">Custom Haircare Image</span>
-                    </div>
-                    <div class="absolute bottom-8 left-8 right-8 bg-[#F5F5F0]/95 p-6 rounded-lg">
-                        <h3 class="serif text-3xl font-bold text-[#2C3E28] mb-2">Custom Haircare</h3>
-                        <p class="text-2xl font-semibold text-[#C5A059] mb-4">3x More Shine</p>
-                        <button class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
-                            Shop Hair
-                        </button>
-                    </div>
-                </div>
-                <!-- Right: Scalp Treatments -->
-                <div class="relative">
-                    <div class="w-full h-[500px] bg-[#2C3E28]/20 rounded-lg flex items-center justify-center border-2 border-[#2C3E28]/30 mb-6">
-                        <span class="text-[#2C3E28]/50">Scalp Treatment Image</span>
-                    </div>
-                    <div class="absolute bottom-8 left-8 right-8 bg-[#F5F5F0]/95 p-6 rounded-lg">
-                        <h3 class="serif text-3xl font-bold text-[#2C3E28] mb-2">Scalp Treatments</h3>
-                        <p class="text-2xl font-semibold text-[#C5A059] mb-4">Total Restoration</p>
-                        <button class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
-                            Shop Scalp
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Social Proof -->
-    <section class="py-20 bg-[#F5F5F0]">
+    <section class="py-20 bg-white border-y border-black">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-            <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28]">
-                Amato da 500,000+ Italiani
+            <h2 class="serif text-4xl md:text-5xl text-black">
+                USED BY 500+ TOP BARBERS IN ITALY.
             </h2>
             <div class="flex justify-center items-center space-x-1">
-                <svg class="w-6 h-6 text-[#C5A059]" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
-                <svg class="w-6 h-6 text-[#C5A059]" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
-                <svg class="w-6 h-6 text-[#C5A059]" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
-                <svg class="w-6 h-6 text-[#C5A059]" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
-                <svg class="w-6 h-6 text-[#C5A059]" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                 </svg>
             </div>
-            <p class="text-[#2C3E28]/70 text-lg">
-                Based on real client feedback.
+            <p class="text-black font-mono text-sm">
+                BASED ON REAL CLIENT FEEDBACK.
             </p>
         </div>
     </section>
 
     <!-- Perks Bar -->
-    <section class="py-12 bg-white border-y border-[#2C3E28]/10">
+    <section class="py-12 bg-white border-y border-black">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <svg class="w-8 h-8 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
+                <div class="text-center space-y-3 border-r border-black p-6">
+                    <div class="w-16 h-16 mx-auto bg-white flex items-center justify-center border border-black">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <p class="font-semibold text-[#2C3E28]">30-Day Returns</p>
+                    <p class="font-mono text-xs text-black">30-DAY RETURNS</p>
                 </div>
-                <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <svg class="w-8 h-8 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="text-center space-y-3 border-r border-black p-6">
+                    <div class="w-16 h-16 mx-auto bg-white flex items-center justify-center border border-black">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
                         </svg>
                     </div>
-                    <p class="font-semibold text-[#2C3E28]">Free Shipping</p>
+                    <p class="font-mono text-xs text-black">FREE SHIPPING</p>
                 </div>
-                <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <svg class="w-8 h-8 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="text-center space-y-3 border-r border-black p-6">
+                    <div class="w-16 h-16 mx-auto bg-white flex items-center justify-center border border-black">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <p class="font-semibold text-[#2C3E28]">Subscriber Discount</p>
+                    <p class="font-mono text-xs text-black">SUBSCRIBER DISCOUNT</p>
                 </div>
-                <div class="text-center space-y-3">
-                    <div class="w-16 h-16 mx-auto bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <svg class="w-8 h-8 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="text-center space-y-3 p-6">
+                    <div class="w-16 h-16 mx-auto bg-white flex items-center justify-center border border-black">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                         </svg>
                     </div>
-                    <p class="font-semibold text-[#2C3E28]">Secure Payment</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ingredient Carousel -->
-    <section class="py-20 bg-[#F5F5F0]">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="serif text-4xl md:text-5xl font-bold text-center text-[#2C3E28] mb-12">
-                Ingredienti Naturali
-            </h2>
-            <div class="carousel-container flex gap-6 overflow-x-auto pb-4">
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Tuscan Olive Oil</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Tuscan Olive Oil</h3>
-                </div>
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Sicilian Lemon</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Sicilian Lemon</h3>
-                </div>
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Piedmont Hazelnut</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Piedmont Hazelnut</h3>
-                </div>
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Lavender</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Lavender</h3>
-                </div>
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Rosemary</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Rosemary</h3>
-                </div>
-                <div class="flex-shrink-0 w-64 space-y-4">
-                    <div class="w-64 h-64 bg-[#C5A059]/20 rounded-lg flex items-center justify-center border-2 border-[#C5A059]/30">
-                        <span class="text-[#2C3E28]/50">Argan Oil</span>
-                    </div>
-                    <h3 class="serif text-xl font-semibold text-[#2C3E28] text-center">Argan Oil</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Authority Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="relative">
-                <div class="w-full h-[400px] bg-[#2C3E28]/10 rounded-lg flex items-center justify-center border-2 border-[#2C3E28]/20 mb-8">
-                    <span class="text-[#2C3E28]/50 text-lg">Authority Banner Image</span>
-                </div>
-                <div class="text-center space-y-4 max-w-3xl mx-auto">
-                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28]">
-                        Backed by Science, Rooted in Tradition
-                    </h2>
-                    <p class="text-xl text-[#2C3E28]/70">
-                        Developed by world-class trichologists in Italy.
-                    </p>
+                    <p class="font-mono text-xs text-black">SECURE PAYMENT</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2C3E28] text-[#F5F5F0] py-12">
+    <footer class="bg-black text-white py-12 border-t border-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="serif text-2xl font-bold mb-4">MEZZALAMA</h3>
-                    <p class="text-sm text-[#F5F5F0]/70">
-                        L'Arte della Cura dei Capelli
+                    <h3 class="serif text-2xl mb-4">MEZZALAMA</h3>
+                    <p class="text-sm font-mono text-white/70">
+                        PRECISION HAIR ENGINEERING.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Careers</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">COMPANY</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">CONTACT</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">CAREERS</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Privacy</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Terms</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">LEGAL</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">PRIVACY</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">TERMS</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Connect</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Instagram</a></li>
-                        <li><a href="#" class="hover:text-[#C5A059] transition">Facebook</a></li>
+                    <h4 class="font-mono font-semibold mb-4 text-sm">CONNECT</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white/80 transition">INSTAGRAM</a></li>
+                        <li><a href="#" class="hover:text-white/80 transition">FACEBOOK</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-[#F5F5F0]/20 pt-8 text-center text-sm text-[#F5F5F0]/70">
-                <p>© 2024 MezzaLama. Tutti i diritti riservati.</p>
+            <div class="border-t border-white/20 pt-8 text-center text-sm font-mono text-white/70">
+                <p>© 2024 MEZZALAMA PROFESSIONAL. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Simple carousel scroll enhancement (optional smooth scroll on button click)
-        // The carousel is already scrollable via CSS, but we can add smooth scroll buttons if needed
-        document.addEventListener('DOMContentLoaded', function() {
-            // Marquee animation is handled via CSS
-            // Carousel scrolling is handled via native browser scroll with smooth behavior
-        });
-    </script>
 </body>
 </html>
-
