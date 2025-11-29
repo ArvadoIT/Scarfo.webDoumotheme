@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Diagnostic - MezzaLama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --olive-green: #2C3E28;
+            --cream: #F5F5F0;
+            --antique-gold: #C5A059;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .step {
+            display: none;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .step.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .texture-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .texture-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(44, 62, 40, 0.15);
+        }
+        .texture-card.selected {
+            border-color: #C5A059;
+            background-color: #C5A059/10;
+        }
+        .goal-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .goal-card:hover {
+            transform: translateY(-2px);
+        }
+        .goal-card.selected {
+            border-color: #C5A059;
+            background-color: #C5A059/10;
+        }
+        .goal-card.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .spinner {
+            border: 3px solid #F5F5F0;
+            border-top: 3px solid #C5A059;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-fill {
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F0] text-[#2C3E28] min-h-screen">
+    
+    <!-- Announcement Bar -->
+    <div class="bg-[#2C3E28] text-[#F5F5F0] py-2 text-center text-sm">
+        <p>Spedizione gratuita per ordini superiori a €100 | Saldi di fine stagione</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-[#F5F5F0] border-b border-[#2C3E28]/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="serif text-2xl font-bold text-[#2C3E28]">
+                <a href="index.html">MEZZALAMA</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="product.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Haircare</a>
+                <a href="ingredients.html" class="text-[#2C3E28] hover:text-[#C5A059] transition">Ingredienti</a>
+                <a href="index.html#heritage" class="text-[#2C3E28] hover:text-[#C5A059] transition">L'Heritage</a>
+            </div>
+            <a href="consultation.html" class="bg-[#2C3E28] text-[#F5F5F0] px-6 py-2 rounded-sm hover:bg-[#1a2518] transition">
+                Inizia la Consulenza
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Progress Bar (Fixed at Top) -->
+    <div class="fixed top-[73px] left-0 right-0 z-40 bg-[#F5F5F0] border-b border-[#2C3E28]/10">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="w-full bg-[#2C3E28]/10 rounded-full h-2">
+                <div id="progressBar" class="progress-fill bg-[#C5A059] h-2 rounded-full" style="width: 0%"></div>
+            </div>
+            <p class="text-sm text-[#2C3E28]/70 mt-2 text-center" id="progressText">Step 1 of 5</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-16 min-h-screen">
+        <div class="max-w-3xl mx-auto px-6">
+            
+            <!-- Step 1: Intro -->
+            <div id="step1" class="step active">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <h1 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-4">
+                        Benvenuto
+                    </h1>
+                    <p class="text-xl text-[#2C3E28]/70 mb-8">
+                        Let's build your profile.
+                    </p>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-[#2C3E28] mb-2">First Name</label>
+                            <input 
+                                type="text" 
+                                id="firstName"
+                                class="w-full border-2 border-[#2C3E28]/20 rounded-sm px-4 py-3 focus:outline-none focus:border-[#C5A059] transition"
+                                placeholder="Enter your first name"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-[#2C3E28] mb-2">Zip Code</label>
+                            <input 
+                                type="text" 
+                                id="zipCode"
+                                class="w-full border-2 border-[#2C3E28]/20 rounded-sm px-4 py-3 focus:outline-none focus:border-[#C5A059] transition"
+                                placeholder="Enter your zip code"
+                            >
+                            <p class="text-xs text-[#2C3E28]/60 mt-2">This helps us understand environmental factors in your area.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Hair Texture -->
+            <div id="step2" class="step">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
+                        Your Hair Texture
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="straight">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
+                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
+                                </svg>
+                            </div>
+                            <p class="font-semibold text-[#2C3E28]">Straight</p>
+                        </div>
+                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="wavy">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
+                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+                                </svg>
+                            </div>
+                            <p class="font-semibold text-[#2C3E28]">Wavy</p>
+                        </div>
+                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="curly">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
+                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                            </div>
+                            <p class="font-semibold text-[#2C3E28]">Curly</p>
+                        </div>
+                        <div class="texture-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-texture="coily">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-[#C5A059]/20 rounded-full flex items-center justify-center border-2 border-[#C5A059]/30">
+                                <svg class="w-12 h-12 text-[#2C3E28]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <p class="font-semibold text-[#2C3E28]">Coily</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Scalp Health -->
+            <div id="step3" class="step">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
+                        Scalp Condition
+                    </h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="scalp" value="oily" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">Oily</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="scalp" value="dry" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">Dry</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="scalp" value="balanced" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">Balanced</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="scalp" value="sensitive" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">Sensitive</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="scalp" value="dandruff" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">Dandruff</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Lifestyle -->
+            <div id="step4" class="step">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-8">
+                        Daily Routine
+                    </h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="lifestyle" value="workout" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">I workout daily</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="lifestyle" value="swim" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">I swim often</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="lifestyle" value="heat" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">I style with heat</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-[#2C3E28]/20 rounded-lg cursor-pointer hover:bg-[#F5F5F0] transition">
+                            <input type="checkbox" name="lifestyle" value="color" class="w-5 h-5 text-[#C5A059] border-[#2C3E28]/30 rounded focus:ring-[#C5A059]">
+                            <span class="ml-4 text-lg text-[#2C3E28]">I color my hair</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Hair Goals -->
+            <div id="step5" class="step">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-4">
+                        Hair Goals
+                    </h2>
+                    <p class="text-[#2C3E28]/70 mb-8">Select up to 3 goals</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="shine">
+                            <p class="font-semibold text-lg text-[#2C3E28]">Shine</p>
+                        </div>
+                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="volume">
+                            <p class="font-semibold text-lg text-[#2C3E28]">Volume</p>
+                        </div>
+                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="repair">
+                            <p class="font-semibold text-lg text-[#2C3E28]">Repair</p>
+                        </div>
+                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="length">
+                            <p class="font-semibold text-lg text-[#2C3E28]">Length</p>
+                        </div>
+                        <div class="goal-card border-2 border-[#2C3E28]/20 rounded-lg p-6 text-center" data-goal="anti-frizz">
+                            <p class="font-semibold text-lg text-[#2C3E28]">Anti-Frizz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyzing Results Screen -->
+            <div id="analyzing" class="step">
+                <div class="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center">
+                    <h2 class="serif text-4xl md:text-5xl font-bold text-[#2C3E28] mb-6">
+                        Analyzing Results...
+                    </h2>
+                    <p class="text-xl text-[#2C3E28]/70 mb-8">
+                        We're crafting your personalized formula
+                    </p>
+                    <div class="flex justify-center mb-8">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="w-full bg-[#2C3E28]/10 rounded-full h-2 max-w-md mx-auto">
+                        <div id="analyzingProgress" class="bg-[#C5A059] h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div id="navigation" class="mt-8 flex justify-between items-center">
+                <button id="backBtn" class="px-6 py-3 border-2 border-[#2C3E28]/30 text-[#2C3E28] rounded-sm hover:bg-[#2C3E28]/5 transition" style="display: none;">
+                    Back
+                </button>
+                <div class="flex-1"></div>
+                <button id="nextBtn" class="px-6 py-3 bg-[#2C3E28] text-[#F5F5F0] rounded-sm hover:bg-[#1a2518] transition">
+                    Next
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        const state = {
+            currentStep: 1,
+            totalSteps: 5,
+            data: {
+                firstName: '',
+                zipCode: '',
+                hairTexture: '',
+                scalpConditions: [],
+                lifestyle: [],
+                goals: []
+            }
+        };
+
+        // DOM Elements
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const nextBtn = document.getElementById('nextBtn');
+        const backBtn = document.getElementById('backBtn');
+        const analyzingProgress = document.getElementById('analyzingProgress');
+
+        // Initialize
+        function init() {
+            updateProgress();
+            setupEventListeners();
+        }
+
+        // Update Progress Bar
+        function updateProgress() {
+            const percentage = (state.currentStep / state.totalSteps) * 100;
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `Step ${state.currentStep} of ${state.totalSteps}`;
+            
+            // Show/hide back button
+            if (state.currentStep === 1) {
+                backBtn.style.display = 'none';
+            } else {
+                backBtn.style.display = 'block';
+            }
+
+            // Update next button text
+            if (state.currentStep === state.totalSteps) {
+                nextBtn.textContent = 'Complete';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        // Show Step
+        function showStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // Show current step
+            const stepElement = document.getElementById(`step${stepNumber}`);
+            if (stepElement) {
+                stepElement.classList.add('active');
+            }
+
+            // Show/hide navigation
+            if (stepNumber > state.totalSteps) {
+                document.getElementById('navigation').style.display = 'none';
+            } else {
+                document.getElementById('navigation').style.display = 'flex';
+            }
+        }
+
+        // Validate Current Step
+        function validateStep() {
+            switch(state.currentStep) {
+                case 1:
+                    const firstName = document.getElementById('firstName').value.trim();
+                    const zipCode = document.getElementById('zipCode').value.trim();
+                    if (!firstName || !zipCode) {
+                        alert('Please fill in both First Name and Zip Code');
+                        return false;
+                    }
+                    state.data.firstName = firstName;
+                    state.data.zipCode = zipCode;
+                    return true;
+                
+                case 2:
+                    if (!state.data.hairTexture) {
+                        alert('Please select your hair texture');
+                        return false;
+                    }
+                    return true;
+                
+                case 3:
+                    const scalpCheckboxes = document.querySelectorAll('input[name="scalp"]:checked');
+                    if (scalpCheckboxes.length === 0) {
+                        alert('Please select at least one scalp condition');
+                        return false;
+                    }
+                    state.data.scalpConditions = Array.from(scalpCheckboxes).map(cb => cb.value);
+                    return true;
+                
+                case 4:
+                    const lifestyleCheckboxes = document.querySelectorAll('input[name="lifestyle"]:checked');
+                    state.data.lifestyle = Array.from(lifestyleCheckboxes).map(cb => cb.value);
+                    return true;
+                
+                case 5:
+                    if (state.data.goals.length === 0) {
+                        alert('Please select at least one hair goal');
+                        return false;
+                    }
+                    return true;
+                
+                default:
+                    return true;
+            }
+        }
+
+        // Next Step
+        function nextStep() {
+            if (!validateStep()) {
+                return;
+            }
+
+            if (state.currentStep < state.totalSteps) {
+                state.currentStep++;
+                updateProgress();
+                showStep(state.currentStep);
+            } else {
+                // Show analyzing screen
+                showAnalyzing();
+            }
+        }
+
+        // Previous Step
+        function prevStep() {
+            if (state.currentStep > 1) {
+                state.currentStep--;
+                updateProgress();
+                showStep(state.currentStep);
+            }
+        }
+
+        // Show Analyzing Screen
+        function showAnalyzing() {
+            // Save user data to localStorage
+            localStorage.setItem('consultationData', JSON.stringify(state.data));
+
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('analyzing').classList.add('active');
+            document.getElementById('navigation').style.display = 'none';
+
+            // Animate progress bar
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                analyzingProgress.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 60); // 3 seconds total (100% / 60ms = ~1.67% per interval, ~60 intervals = 3.6s, but we'll do 2% per 60ms = 3s)
+
+            // Redirect after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'product.html';
+            }, 3000);
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Navigation buttons
+            nextBtn.addEventListener('click', nextStep);
+            backBtn.addEventListener('click', prevStep);
+
+            // Hair texture cards
+            document.querySelectorAll('.texture-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.texture-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    state.data.hairTexture = this.dataset.texture;
+                });
+            });
+
+            // Hair goals cards (select up to 3)
+            document.querySelectorAll('.goal-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    if (this.classList.contains('disabled')) {
+                        return;
+                    }
+
+                    const goal = this.dataset.goal;
+                    const isSelected = this.classList.contains('selected');
+
+                    if (isSelected) {
+                        this.classList.remove('selected');
+                        state.data.goals = state.data.goals.filter(g => g !== goal);
+                    } else {
+                        if (state.data.goals.length < 3) {
+                            this.classList.add('selected');
+                            state.data.goals.push(goal);
+                        }
+                    }
+
+                    // Update disabled state
+                    updateGoalCards();
+                });
+            });
+        }
+
+        // Update Goal Cards (disable if 3 selected)
+        function updateGoalCards() {
+            const maxSelected = state.data.goals.length >= 3;
+            document.querySelectorAll('.goal-card').forEach(card => {
+                if (maxSelected && !card.classList.contains('selected')) {
+                    card.classList.add('disabled');
+                } else {
+                    card.classList.remove('disabled');
+                }
+            });
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+
